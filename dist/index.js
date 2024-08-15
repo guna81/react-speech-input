@@ -736,7 +736,6 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
 
 var Input = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.forwardRef)(function (props, ref) {
     var value = props.value, onChange = props.onChange, renderInput = props.renderInput, containerStyle = props.containerStyle, style = props.style, _a = props.micOnIcon, micOnIcon = _a === void 0 ? external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(MicOnIcon, null) : _a, _b = props.micOffIcon, micOffIcon = _b === void 0 ? external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(MicOffIcon, null) : _b, continuous = props.continuous, language = props.language, recordButtonStyle = props.recordButtonStyle, rest = __rest(props, ["value", "onChange", "renderInput", "containerStyle", "style", "micOnIcon", "micOffIcon", "continuous", "language", "recordButtonStyle"]);
-    // input element ref
     var speechInputRef = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useRef)(null);
     var inputRef = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useRef)(null);
     var _c = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useState)(value), inputValue = _c[0], setInputValue = _c[1];
@@ -806,11 +805,9 @@ var Transcriber = (0,external_root_React_commonjs2_react_commonjs_react_amd_reac
             resetTranscript();
         };
     }, []);
-    // set listening
     (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useEffect)(function () {
         setListening(listening);
     }, [listening]);
-    // on value change
     (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useEffect)(function () {
         if (transcript) {
             onValueChange(transcript);
@@ -820,7 +817,6 @@ var Transcriber = (0,external_root_React_commonjs2_react_commonjs_react_amd_reac
         console.log("Web Speech API is not supported in this browser. Try Chrome or Firefox.");
         return null;
     }
-    // handle mic click
     var handleMicClick = function () {
         var _a;
         (_a = ref.current) === null || _a === void 0 ? void 0 : _a.focus();

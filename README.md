@@ -79,6 +79,8 @@ function App() {
 | `continuous`        | `boolean`    | Continuous Recognition direction.                        | true          |
 | `language`          | `string`     | Language Setting.                                        | en-US         |
 
-## browser Support
+&nbsp;
+
+## Browser Support
 
 This compoenent is not supported in all browsers. check for browser campatability [here](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility)

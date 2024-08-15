@@ -1,8 +1,9 @@
 {
   "name": "react-speech-input",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple react speech recognition enabled input",
   "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",

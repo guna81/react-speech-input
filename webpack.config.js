@@ -11,10 +11,6 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".css"],
-    // alias: {
-    //   react: path.resolve(__dirname, "node_modules/react"),
-    //   "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
-    // },
   },
   module: {
     rules: [
