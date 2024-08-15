@@ -1,5 +1,4 @@
 src/
-example/
 test/
 .gitginore
 .npmignore
@@ -48,3 +47,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+example/

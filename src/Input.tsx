@@ -6,20 +6,26 @@ import React, {
   forwardRef,
   useCallback,
 } from "react";
+
 import useSpeechRecognition from "./useSpeechRecognition";
 import { MicOnIcon, MicOffIcon } from "./Icons";
 
-import styles from "./Input.module.css";
+import * as styles from "./Input.module.css";
 
 interface InputProps {
+  // input props
   value: string;
   onChange: (value: string) => void;
   renderInput?: (props: any) => JSX.Element;
+  containerStyle?: React.CSSProperties;
   style?: React.CSSProperties;
+
+  // transcriber props
   micOnIcon?: JSX.Element;
   micOffIcon?: JSX.Element;
   continuous?: boolean;
   language?: string;
+  recordButtonStyle?: React.CSSProperties;
 }
 
 const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
@@ -27,18 +33,21 @@ const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
     value,
     onChange,
     renderInput,
+    containerStyle,
     style,
+
     micOnIcon = <MicOnIcon />,
     micOffIcon = <MicOffIcon />,
     continuous,
     language,
+    recordButtonStyle,
     ...rest
   } = props;
 
-  const voiceInputRef = useRef<HTMLDivElement>(null);
+  const speechInputRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [inputValue, setInputValue] = useState(value);
+  const [inputValue, setInputValue] = useState<string>(value);
 
   const onInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,9 +56,10 @@ const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
     [setInputValue]
   );
 
-  const [listening, setListening] = useState(false);
-  const [focused, setFocused] = useState(false);
+  const [listening, setListening] = useState<boolean>(false);
+  const [focused, setFocused] = useState<boolean>(false);
 
+  // handle focus and blur
   const handleFocus = useCallback(() => {
     setFocused(true);
   }, []);
@@ -60,10 +70,11 @@ const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
     }
   }, [listening]);
 
+  // listen for click outside
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (
-      voiceInputRef.current &&
-      !voiceInputRef.current.contains(event.target as Node)
+      speechInputRef.current &&
+      !speechInputRef.current.contains(event.target as Node)
     ) {
       setFocused(false);
     }
@@ -76,6 +87,7 @@ const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
     };
   }, []);
 
+  // sync input values
   useEffect(() => {
     if (value !== inputValue) {
       setInputValue(value);
@@ -88,18 +100,23 @@ const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
     }
   }, [inputValue]);
 
+  // input props
   const inputProps = {
     ref: inputRef,
     value: inputValue,
-    style: style,
     onChange: onInputChange,
     onFocus: handleFocus,
     onBlur: handleBlur,
-    ...rest,
+    style: style,
+    // ...rest,
   };
 
   return (
-    <div ref={voiceInputRef} className={styles.voiceTypeField}>
+    <div
+      style={containerStyle}
+      ref={speechInputRef}
+      className={styles.speechInput}
+    >
       <div className={styles.inputContainer}>
         {renderInput ? renderInput(inputProps) : <input {...inputProps} />}
       </div>
@@ -113,6 +130,7 @@ const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
           micOnIcon={micOnIcon}
           micOffIcon={micOffIcon}
           setListening={setListening}
+          recordButtonStyle={recordButtonStyle}
         />
       )}
     </div>
@@ -129,6 +147,8 @@ interface TranscriberProps {
   continuous?: boolean;
   language?: string;
   setListening: (value: boolean) => void;
+  recordButtonContainerStyle?: React.CSSProperties;
+  recordButtonStyle?: React.CSSProperties;
 }
 
 export const Transcriber = forwardRef<any, TranscriberProps>(
@@ -141,6 +161,7 @@ export const Transcriber = forwardRef<any, TranscriberProps>(
       continuous,
       language,
       setListening,
+      recordButtonStyle,
     }: TranscriberProps,
     ref: any
   ) => {
@@ -157,6 +178,7 @@ export const Transcriber = forwardRef<any, TranscriberProps>(
       language,
     });
 
+    // reset transcript when component unmount
     useEffect(() => {
       return () => {
         resetTranscript();
@@ -186,8 +208,8 @@ export const Transcriber = forwardRef<any, TranscriberProps>(
     };
 
     return (
-      <div className={styles.voiceRecorderContainer}>
-        <a href="#" className={styles.voiceRecorder} onClick={handleMicClick}>
+      <div style={recordButtonStyle} className={styles.recordButtonContainer}>
+        <a href="#" className={styles.recordButton} onClick={handleMicClick}>
           {listening ? micOnIcon : micOffIcon}
         </a>
       </div>

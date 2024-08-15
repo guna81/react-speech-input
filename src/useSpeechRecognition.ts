@@ -12,15 +12,15 @@ const useSpeechRecognition = ({
   continuous,
   language,
 }: Props) => {
-  const [transcript, setTranscript] = useState("");
-  const [listening, setListening] = useState(false);
+  const [transcript, setTranscript] = useState<string>("");
+  const [listening, setListening] = useState<boolean>(false);
   const [supportsSpeechRecognition, setSupportsSpeechRecognition] =
     useState(false);
 
   const recognition = useRef<any>(null);
 
   useEffect(() => {
-    if (initialValue && !transcript) {
+    if (initialValue !== transcript) {
       setTranscript(initialValue);
     }
   }, [initialValue]);
@@ -67,8 +67,10 @@ const useSpeechRecognition = ({
           }
         }
 
-        setTranscript((prevValue) => {
-          finalTranscript = finalTranscript || prevValue;
+        setTranscript((prevValue: string) => {
+          const existingValue = prevValue ? `${prevValue.trim()} ` : "";
+
+          finalTranscript = finalTranscript || existingValue;
           const text = capitalize(finalTranscript + interimTranscript);
           return text;
         });
