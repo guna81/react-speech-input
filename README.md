@@ -12,7 +12,8 @@ Install with npm
 
 ## Demo
 
-Checkout the [Demo](https://codesandbox.io/s/react-speech-input-example-gj8w2f?file=/src/App.js).
+Checkout the
+<a href="https://codesandbox.io/s/react-speech-input-example-gj8w2f?file=/src/App.js" target="_blank">Demo</a>
 
 ## Usage/Examples
 
