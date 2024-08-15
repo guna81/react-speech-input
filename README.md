@@ -1,4 +1,4 @@
-# React Speec Input
+# React Speech Input
 
 A simple and customizable speech to text input for react
 
@@ -78,5 +78,7 @@ function App() {
 | `micOffIcon`        | `react node` | Mic off. icon                                            |               |
 | `continuous`        | `boolean`    | Continuous Recognition direction.                        | true          |
 | `language`          | `string`     | Language Setting.                                        | en-US         |
+
+## browser Support
 
 This compoenent is not supported in all browsers. check for browser campatability [here](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility)
