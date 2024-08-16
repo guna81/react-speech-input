@@ -26,6 +26,7 @@ interface InputProps {
   continuous?: boolean;
   language?: string;
   recordButtonStyle?: React.CSSProperties;
+  alwaysShowRecordButton?: boolean;
 }
 
 const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
@@ -41,10 +42,11 @@ const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
     continuous,
     language,
     recordButtonStyle,
+    alwaysShowRecordButton,
     ...rest
   } = props;
 
-  const speechInputRef = useRef<HTMLDivElement>(null);
+  const speechInputRef = useRef<HTMLDivElement>(ref?.current || null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [inputValue, setInputValue] = useState<string>(value);
@@ -120,7 +122,7 @@ const Input = forwardRef<any, InputProps>((props: InputProps, ref: any) => {
       <div className={styles.inputContainer}>
         {renderInput ? renderInput(inputProps) : <input {...inputProps} />}
       </div>
-      {focused && (
+      {(alwaysShowRecordButton || focused) && (
         <Transcriber
           ref={inputRef}
           value={inputValue}

@@ -735,8 +735,8 @@ var __rest = (undefined && undefined.__rest) || function (s, e) {
 
 
 var Input = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.forwardRef)(function (props, ref) {
-    var value = props.value, onChange = props.onChange, renderInput = props.renderInput, containerStyle = props.containerStyle, style = props.style, _a = props.micOnIcon, micOnIcon = _a === void 0 ? external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(MicOnIcon, null) : _a, _b = props.micOffIcon, micOffIcon = _b === void 0 ? external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(MicOffIcon, null) : _b, continuous = props.continuous, language = props.language, recordButtonStyle = props.recordButtonStyle, rest = __rest(props, ["value", "onChange", "renderInput", "containerStyle", "style", "micOnIcon", "micOffIcon", "continuous", "language", "recordButtonStyle"]);
-    var speechInputRef = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useRef)(null);
+    var value = props.value, onChange = props.onChange, renderInput = props.renderInput, containerStyle = props.containerStyle, style = props.style, _a = props.micOnIcon, micOnIcon = _a === void 0 ? external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(MicOnIcon, null) : _a, _b = props.micOffIcon, micOffIcon = _b === void 0 ? external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(MicOffIcon, null) : _b, continuous = props.continuous, language = props.language, recordButtonStyle = props.recordButtonStyle, alwaysShowRecordButton = props.alwaysShowRecordButton, rest = __rest(props, ["value", "onChange", "renderInput", "containerStyle", "style", "micOnIcon", "micOffIcon", "continuous", "language", "recordButtonStyle", "alwaysShowRecordButton"]);
+    var speechInputRef = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useRef)((ref === null || ref === void 0 ? void 0 : ref.current) || null);
     var inputRef = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useRef)(null);
     var _c = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useState)(value), inputValue = _c[0], setInputValue = _c[1];
     var onInputChange = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.useCallback)(function (e) {
@@ -789,7 +789,7 @@ var Input = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.for
     };
     return (external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement("div", { style: containerStyle, ref: speechInputRef, className: Input_module/* speechInput */.pi },
         external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement("div", { className: Input_module/* inputContainer */.Kf }, renderInput ? renderInput(inputProps) : external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement("input", Input_assign({}, inputProps))),
-        focused && (external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Transcriber, { ref: inputRef, value: inputValue, onValueChange: setInputValue, continuous: continuous, language: language, micOnIcon: micOnIcon, micOffIcon: micOffIcon, setListening: setListening, recordButtonStyle: recordButtonStyle }))));
+        (alwaysShowRecordButton || focused) && (external_root_React_commonjs2_react_commonjs_react_amd_react_default().createElement(Transcriber, { ref: inputRef, value: inputValue, onValueChange: setInputValue, continuous: continuous, language: language, micOnIcon: micOnIcon, micOffIcon: micOffIcon, setListening: setListening, recordButtonStyle: recordButtonStyle }))));
 });
 /* harmony default export */ const src_Input = (Input);
 var Transcriber = (0,external_root_React_commonjs2_react_commonjs_react_amd_react_.forwardRef)(function (_a, ref) {

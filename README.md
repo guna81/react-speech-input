@@ -67,17 +67,18 @@ function App() {
 
 #### Props
 
-| Parameter           | Type         | Description                                              | Default Value |
-| :------------------ | :----------- | :------------------------------------------------------- | :------------ |
-| `value`             | `string`     | Value of the input.                                      |               |
-| `onChange`          | `function`   | On change function that takes one string as a parameter. |               |
-| `style`             | `object`     | input CSS styles.                                        |               |
-| `containerStyle`    | `object`     | Input container CSS styles.                              |               |
-| `recordButtonStyle` | `object`     | Recorder Button CSS styles.                              |               |
-| `micOnIcon`         | `react node` | Mic on icon.                                             |               |
-| `micOffIcon`        | `react node` | Mic off. icon                                            |               |
-| `continuous`        | `boolean`    | Continuous Recognition direction.                        | true          |
-| `language`          | `string`     | Language Setting.                                        | en-US         |
+| Parameter                | Type         | Description                                              | Default Value |
+| :----------------------- | :----------- | :------------------------------------------------------- | :------------ |
+| `value`                  | `string`     | Value of the input.                                      |               |
+| `onChange`               | `function`   | On change function that takes one string as a parameter. |               |
+| `style`                  | `object`     | input CSS styles.                                        |               |
+| `containerStyle`         | `object`     | Input container CSS styles.                              |               |
+| `recordButtonStyle`      | `object`     | Recorder Button CSS styles.                              |               |
+| `micOnIcon`              | `react node` | Mic on icon.                                             |               |
+| `micOffIcon`             | `react node` | Mic off. icon                                            |               |
+| `continuous`             | `boolean`    | Continuous Recognition direction.                        | true          |
+| `language`               | `string`     | Language Setting.                                        | en-US         |
+| `alwaysShowRecordButton` | `boolean`    | Show record button always.                               | false         |
 
 &nbsp;
 

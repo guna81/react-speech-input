@@ -1,6 +1,6 @@
 {
   "name": "react-speech-input",
-  "version": "1.0.4",
+  "version": "1.2.0",
   "description": "A simple react speech recognition enabled input",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
