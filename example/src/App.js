@@ -41,6 +41,17 @@ function App() {
             )}
           />
         </div>
+
+        <div>
+          <h2>Always Show Record Button</h2>
+
+          <SpeechInput
+            allwaysShowRecordButton
+            style={{ width: 400, height: 50 }}
+            value={value}
+            onChange={onChange}
+          />
+        </div>
       </div>
     </div>
   );
